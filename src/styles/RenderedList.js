@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const RenderedList = styled.ul`
 	list-style: none;
@@ -12,10 +12,14 @@ export const RenderedList = styled.ul`
 export const ListItem = styled.li`
 	border-bottom: 0.5px dashed #999;
 	padding: 5px 0;
-	text-decoration: ${(props) => (props.status ? "line-through" : "")};
-	font-style: ${(props) => (props.status ? "italic" : "")};
-	color: ${(props) => (props.status ? "#999" : "")};
-	opacity: ${(props) => (props.status ? "0.5" : "")};
+	${(props) =>
+		props.completed &&
+		css`
+			text-decoration: line-through;
+			font-style: italic;
+			color: #999;
+			opacity: 0.5;
+		`};
 `;
 
 export const Button = styled.button`
@@ -23,7 +27,15 @@ export const Button = styled.button`
 	width: 25px;
 	height: 25px;
 	outline: none;
-	margin-right: ${(props) => (props.duty === "done" ? "10px" : "")};
-	float: ${(props) => (props.duty === "remove" ? "right" : "")};
-	font-size: ${(props) => (props.duty === "remove" ? "medium" : "")};
+	${(props) =>
+		props.done &&
+		css`
+			margin-right: 10px;
+		`}
+	${(props) =>
+		props.remove &&
+		css`
+			float: right;
+			font-size: medium;
+		`}
 `;

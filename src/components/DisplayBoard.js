@@ -24,12 +24,12 @@ export default function DisplayBoard({ items, setTodoItems }) {
 	return (
 		<RenderedList>
 			{items.map((item) => (
-				<ListItem key={item.id} status={item.completed ? true : false}>
-					<Button duty={"done"} onClick={() => handleDoneBtn(item)}>
+				<ListItem key={item.id} completed={item.completed ? true : false}>
+					<Button done onClick={() => handleDoneBtn(item)}>
 						{item.completed ? "↩" : "✔"}
 					</Button>
 					{item.todoItem}
-					<Button duty={"remove"} onClick={() => handleRemoveBtn(item)}>
+					<Button remove onClick={() => handleRemoveBtn(item)}>
 						x
 					</Button>
 				</ListItem>
